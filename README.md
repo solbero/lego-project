@@ -1,8 +1,8 @@
 # Legoprosjekt - ELE130
 
-# Komme i gang
+## Komme i gang
 
-## Prosjektsstruktur
+### Prosjektsstruktur
 
 ```sh
 lego-project
