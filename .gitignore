@@ -351,3 +351,8 @@ TSWLatexianTemp*
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# PROJECT FILES
+
+# Folders
+build/*
