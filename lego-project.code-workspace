@@ -5,7 +5,8 @@
 		}
 	],
 	"settings": {
-		"latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+		"latex-workshop.latex.outDir": "%TMPDIR%",
+		"latex-workshop.intellisense.citation.backend": "biblatex",
 		"latex-workshop.latex.tools": [
 			{
 				"name": "latexmk",
