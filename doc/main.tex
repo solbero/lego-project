@@ -16,6 +16,7 @@
 % Mattepakker
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{siunitx}
 
 % Grafikkpakker
 \usepackage{graphicx}
@@ -23,9 +24,11 @@
 
 % Miljøpakker
 \usepackage{enumerate}
-\usepackage{matlab-prettifier}
+\usepackage{listings}
+\usepackage[framed, numbered]{matlab-prettifier}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{csquotes}
 
 % Dokumentpakker
 \usepackage{fancyhdr}
@@ -33,14 +36,20 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{appendix}
-\usepackage{subfiles}
+\usepackage[style=authoryear, backend=biber]{biblatex}
 
 % Tabellpakker
 \usepackage{booktabs}
 
+% Plottepakker
+\usepackage{pgfplots}
+
 % Tekstpakker
 \usepackage{todonotes}
 \usepackage{lipsum}
+
+% Andre pakker
+\usepackage{subfiles}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Konfigurasjon
@@ -50,7 +59,13 @@
 \selectlanguage{norsk}
 
 % Definer grafikkstier
-\graphicspath{{./bilder/forside}}
+\graphicspath{%
+    {bilder},
+    {figurer},
+}
+
+% Definer bibliografistier
+\addbibresource{\subfix{referanser.bib}}
 
 % Valg for undertekster til figurer og tabeller
 \captionsetup{
@@ -72,23 +87,37 @@
 \setlength{\marginparwidth}{3cm}
 \setlength{\headheight}{14pt}
 
-% Valg for sitering
-\bibliographystyle{plain}
+% Valg for pgfplots-miljø
+\pgfplotsset{
+    compat=1.18,
+    label style={font=\footnotesize},
+    ticklabel style={font=\footnotesize},
+    }
+\usepgfplotslibrary{fillbetween}
+
+\makeatletter
+\providecommand\tikz@resetexpandcount{\tikz@expandcount=100\relax}
+\makeatother
+
+% Valg for listings-miljø
+\lstset{
+    literate=%
+    {æ}{{\ae}}1
+    {Æ}{{\AE}}1
+    {Ø}{{\O}}1
+    {ø}{{\o}}1
+    {å}{{\r a}}1
+    {Å}{{\r A}}1
+    }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kommandoer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\renewcommand{\lstlistingname}{Kode}
+\renewcommand{\lstlistlistingname}{Liste av kode}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Start av dokumentet
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-% Definere sidehoder og -føtter
-\pagestyle{fancyplain}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
@@ -99,11 +128,17 @@
 \rfoot{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start av dokumentet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Frontmatter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Importer forside
-\subfile{./forside.tex}
+\subfile{forside.tex}
 \newpage
 
 % Romerk numbering av frontmatter
@@ -128,6 +163,9 @@
 % Romerk numbering av mainmatter
 \pagenumbering{arabic}
 
+% Definere sidehoder og -føtter
+\pagestyle{fancyplain}
+
 % Importer kapitler og konklusjon
 \subfile{kap1_integrasjon.tex}
 \subfile{kap2_filtrering.tex}
@@ -140,7 +178,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Importer bibliografi
-\bibliography{referanser.bib}
+\printbibliography
 \addcontentsline{toc}{chapter}{Bibliografi}
 \newpage
 
@@ -149,9 +187,6 @@
 
 % Konfigurer overskrift for vedlegg
 \addcontentsline{toc}{chapter}{Vedlegg}
-\renewcommand{\appendixname}{Vedlegg}
-\renewcommand{\appendixpagename}{Vedlegg}
-
 \subfile{vedlegg_timelister.tex}
 
 \end{document}
