@@ -54,8 +54,9 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{kap1_skisse_beholder.pdf}}%
-    \put(0.61306811,0.20267318){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tapping $u(k)$ [cl/s],\\$u(k) < 0$\end{tabular}}}}%
-    \put(-0.00013331,0.65186026){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fylling $u(k)$ [cl/s],\\$u(k) > 0$\end{tabular}}}}%
-    \put(0.23520539,0.15374564){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Volum $y(k)$ [cl],\\$y(k) > 0$ \end{tabular}}}}%
+    \put(0.61306811,0.20267318){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tapping $u(k)$ [cl/s],\\$u(k) \leq 0$\end{tabular}}}}%
+    \put(-0.00013331,0.65186026){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fylling $u(k)$ [cl/s],\\$u(k) \geq 0$\end{tabular}}}}%
+    \put(0.23058379,0.32281243){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Volum $y(k)$ [cl],\\$y(k) \geq 0$ \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{kap1_skisse_beholder.pdf}}%
   \end{picture}%
 \endgroup%
