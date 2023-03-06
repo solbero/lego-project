@@ -25,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.2935185"
-     inkscape:cx="164.2806"
-     inkscape:cy="148.04581"
+     inkscape:zoom="3.6586228"
+     inkscape:cx="165.49943"
+     inkscape:cy="139.80671"
      inkscape:window-width="1920"
      inkscape:window-height="1022"
      inkscape:window-x="0"
@@ -79,15 +79,15 @@
        y="74.138885" />
     <path
        id="path526"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        d="M 41.313241,53.035006 V 95.439653 H 73.917452 L 73.594991,52.838118"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:#2f98ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#2f98ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="m 73.862874,88.229248 h 7.252181 v 5.208075 h -3.001864 v -3.16007 h -4.234815 z"
        id="path1219" />
     <path
-       style="fill:#2f98ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#2f98ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="m 22.796207,47.126258 h 25.773014 v 5.208075 h -3.001864 v -3.16007 H 22.811709 Z"
        id="path1219-7"
        sodipodi:nodetypes="ccccccc" />
@@ -106,7 +106,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
          x="77.475067"
          y="82.696907"
-         id="tspan1327">$u(k) &lt; 0$</tspan></text>
+         id="tspan1327">$u(k) \leq 0$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
@@ -122,22 +122,26 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
          x="22.280409"
          y="42.265285"
-         id="tspan1327-2">$u(k) &gt; 0$</tspan></text>
+         id="tspan1327-2">$u(k) \geq 0$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
-       x="43.463398"
-       y="82.100906"
+       style="font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="43.047405"
+       y="66.883095"
        id="text1331"><tspan
          sodipodi:role="line"
          id="tspan1329"
-         style="stroke-width:0.264583"
-         x="43.463398"
-         y="82.100906">Volum $y(k)$ [cl],</tspan><tspan
+         style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         x="43.047405"
+         y="66.883095">Volum $y(k)$ [cl],</tspan><tspan
          sodipodi:role="line"
-         style="stroke-width:0.264583"
-         x="43.463398"
-         y="87.100906"
-         id="tspan1333">$y(k) &gt; 0$ </tspan></text>
+         style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         x="43.047405"
+         y="71.883095"
+         id="tspan1333">$y(k) \geq 0$ </tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 49.173355,62.615013 v 0"
+       id="path477" />
   </g>
 </svg>
