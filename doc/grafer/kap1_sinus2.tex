@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KAPPITTEL 1: GRAF SINUS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[../main]{subfiles}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start av dokumentet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+
+    \pgfplotsset{
+        grid=major,
+        height=0.3\textwidth,
+        xmin=1.5,
+        xmax=3.85,
+        width=\linewidth,
+    }
+    \begin{tikzpicture}
+        % Plot 1
+        \begin{axis}[%
+                name=plot1,
+                ylabel={$u_2(t)$ [cl/s]},
+                xlabel={$t$ [s]},
+                ymin=-25,
+                ymax=25,
+            ]
+
+            % Plott strømningsdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue,
+            ]
+            table[%
+                    x=t,
+                    y=f,
+                    col sep=comma
+                ]{\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Sinus2.csv}};
+
+            \draw[-, black, solid] (0,0) -- (7,0);
+
+            % Legg til piler
+            \draw[<->, black, dashed] (1.7,-11) -- (2.4,-11) node [pos=0.5, below] {$T_{p_{u_2}} = \SI{0.7}{s}$};
+            \draw[<->, black, dashed] (2.4,0) -- (2.4,10) node [pos=1,above] {$a_{u_2} = \SI{9.25}{cl/s}$};
+
+        \end{axis}
+
+        % Plot 2
+        \begin{axis}[
+                name=plot2,
+                at=(plot1.below south west), anchor=above north west,
+                ymin=-4,
+                ymax=4,
+                ylabel={$y_2(t)$ [cl]},
+                xlabel={$t$ [s]},
+            ]
+            % Plott volumdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue
+            ]
+            table [%
+                    x=t,
+                    y=v,
+                    col sep=comma
+                ]
+                {\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Sinus2.csv}};
+
+            \draw[-, black, solid] (0,0) -- (7,0);
+
+            % Legg til piler
+            \draw[<->, black, dashed] (1.8,-1.2) -- (2.5,-1.2) node [pos=0.5, below] {$T_{p_{y_2}} = \SI{0.7}{s}$};
+            \draw[<->, black, dashed] (2.5,0) -- (2.5,1.2) node [pos=1,above] {$a_{y_2} = \SI{1.0}{cl/s}$};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{.}
+    \label{fig:kap1_sinus2}
+
+\end{figure}
+
+\end{document}

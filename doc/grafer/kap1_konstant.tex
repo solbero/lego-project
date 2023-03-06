@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% KAPPITTEL 1: GRAF FLOW
+% KAPPITTEL 1: GRAF KONSTANT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[../main]{subfiles}
@@ -87,20 +87,14 @@
             (\pgfkeysvalueof{/pgfplots/xmin},20) --
             (\pgfkeysvalueof{/pgfplots/xmax},20);
 
-            % Skraver areal mellom graf og akse
-            \addplot[solid, gray, opacity=0.25] fill between [of=VOLUME and AXIS, soft clip={domain=1.8:4.4}];
-
-            % Legg til teskt for areal
-            \node [] at (3.5,40) {$A2$};
-
             % Legg til piler
             \draw[<->, black, dashed] (1.9,20) -- (4.4,20) node [pos=0.5,below] {$\Delta t = \SI{2.6}{s}$};
             \draw[<->, black, dashed] (4.4,20) -- (4.4,72) node [pos=0.5,right] {$\Delta y = \SI{52}{cl}$};
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Strømning $u(t)$ ved fylling og tapping av væske i glasset og forandring i volum $y(t)$ i glasset.}
-    \label{fig:kap1_flow}
+    \caption{Strømning $u(t)$ ved konstant fylle og tapperate og forandring i volum $y(t)$ i beholderen. }
+    \label{fig:kap1_konstant}
 
 \end{figure}
 
