@@ -17,7 +17,8 @@ close all;
 % Skal prosjektet gjennomføres online mot EV3 eller mot lagrede data?
 online = true;
 % Skal prosjektet lagre data etter en sesjon?
-save_files = false;
+save_mat = false;
+save_csv = false;
 % Spesifiser et beskrivende filnavn for lagring av måledata
 filename_mat = 'data/Prosjekt01_NumeriskIntegrasjon_Test.mat';
 filename_csv = 'data/Prosjekt01_NumeriskIntegrasjon_Test.csv';
@@ -118,14 +119,17 @@ while ~JoyMainSwitch
     % hvis motor er tilkoplet.
     % Kaller IKKE på en funksjon slik som i Python.
 
+    % Parametre
+    Offset = 0.0;
+
     % Tilordne målinger til variabler
-    ZeroFlow = Lys(1);
+    ZeroFlow = Lys(1) + Offset;
 
     % Spesifisering av initialverdier og beregninger
     if k == 1
         % Initialverdier
         Ts(k) = 0.01;  % nominell verdi
-        Volum(k) = 0; % initialverdi volum [cl]
+        Volum(k) = 2.5; % initialverdi volum [cl]
         Flow(k) = 0; % initialverdi flow [cl/s]
     else
         Ts(k) = Tid(k) - Tid(k-1); % beregne tidsskritt
@@ -178,9 +182,12 @@ end
 % Denne seksjonen lagrer dataene etter en sesjon.
 % Dataene blir lagret i samme mappe som kildefilen.
 
-if save_files == true
+if save_mat == true
     % Lagre .mat-fil
     save(filename_mat, 'Tid', 'Lys', 'Flow', 'Volum');
+end
+
+if save_csv == true
     % Lagre .csv-fil
     csv_data = [Tid', Flow', Volum']; % Transpose
     table = array2table(csv_data, "VariableNames",{'t', 'f', 'v'}); % Converter til tabell med overskrifter
