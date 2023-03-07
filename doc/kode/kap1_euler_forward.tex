@@ -10,21 +10,22 @@
 
 \begin{document}
 
-\begin{minipage}{\textwidth}
+\begin{minipage}[htb]{\textwidth}
 
     \begin{lstlisting}[%
     style=Matlab-editor,
     basicstyle=\footnotesize,
+    label={lst:kap1_euler},
     caption={Generell implementering av Euler's forovermetode i \textsc{MATLAB}.}
     ]
 for k = 1 : n
     if k == 1
-        y(k) = 0;
+        y(k) = 0; % Initialverdi
     else
-        y(k) = y(k-1) + delta_x * f(k-1);
+        y(k) = y(k-1) + delta_x * f(k-1); % Rekursiv integrering
     end
 end
-\end{lstlisting}\label{lst:kap1_euler}
+\end{lstlisting}
 
 \end{minipage}
 

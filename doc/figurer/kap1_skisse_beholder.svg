@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="107.27345mm"
+   height="33.206932mm"
+   viewBox="0 0 107.27345 33.206932"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="kap1_skisse_beholder.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.587037"
+     inkscape:cx="230.9592"
+     inkscape:cy="33.822477"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1321">
+      <stop
+         style="stop-color:#0000fc;stop-opacity:1;"
+         offset="0"
+         id="stop1317" />
+      <stop
+         style="stop-color:#00b4ff;stop-opacity:1;"
+         offset="1"
+         id="stop1319" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : -115.29307 : 1"
+       inkscape:vp_y="0 : 999.99996 : 0"
+       inkscape:vp_z="210 : -115.29307 : 1"
+       inkscape:persp3d-origin="105 : -164.79307 : 1"
+       id="perspective292" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1321"
+       id="linearGradient1323"
+       x1="73.917389"
+       y1="95.43988"
+       x2="73.594933"
+       y2="81.942513"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-5.0296069,-62.482722)">
+    <path
+       id="path526-3"
+       style="fill:url(#linearGradient1323);fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="M 73.594931,81.942516 41.31318,82.139403 v 13.30048 h 32.604212 l -0.07493,-5.737117 h 19.505786 v 3.160014 h 3.001884 V 87.654829 H 73.815589 Z"
+       sodipodi:nodetypes="ccccccccccc" />
+    <path
+       id="path526"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m 41.31318,71.026903 v 24.41298 h 32.604212 l -0.07493,-5.737117 h 19.505786 v 3.160014 h 3.001884 V 87.654829 H 73.815589 L 73.594931,70.830016"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       style="fill:#00b4ff;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.0296069,65.436468 H 48.388707 v 5.208075 h -3.001864 v -3.16007 H 5.0451089 Z"
+       id="path1219-7"
+       sodipodi:nodetypes="ccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+       x="77.475067"
+       y="75.051071"
+       id="text1275"><tspan
+         sodipodi:role="line"
+         id="tspan1273"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+         x="77.475067"
+         y="75.051071">Tapping $u(k)$ [cl/s],</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+         x="77.475067"
+         y="80.051071"
+         id="tspan1327">$u(k) \leq 0$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+       x="4.9756098"
+       y="75.043068"
+       id="text1275-5"><tspan
+         sodipodi:role="line"
+         id="tspan1273-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+         x="4.9756098"
+         y="75.043068">Fylling $u(k)$ [cl/s],</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';stroke-width:0.264583"
+         x="4.9756098"
+         y="80.043068"
+         id="tspan1327-2">$u(k) \geq 0$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4px;line-height:1.25;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O';fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="43.047398"
+       y="75.043068"
+       id="text1331"><tspan
+         sodipodi:role="line"
+         id="tspan1329"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         x="43.047398"
+         y="75.043068">Volum $y(k)$ [cl],</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+         x="43.047398"
+         y="80.043068"
+         id="tspan1333">$y(k) \geq 0$ </tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 49.173355,62.615013 v 0"
+       id="path477" />
+  </g>
+</svg>

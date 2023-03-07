@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KAPPITTEL 1: GRAF CHIRP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[../main]{subfiles}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start av dokumentet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+
+    \pgfplotsset{
+        grid=major,
+        height=0.3\textwidth,
+        xmin=1,
+        xmax=9,
+        width=\linewidth,
+    }
+    \begin{tikzpicture}
+        % Plot 1
+        \begin{axis}[%
+                name=plot1,
+                ylabel={$u_1(t)$ [cl/s]},
+                xlabel={$t$ [s]},
+                ymin=-20,
+                ymax=20,
+                thick,
+            ]
+
+            % Plott strømningsdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue,
+            ]
+            table[%
+                    x=t,
+                    y=f,
+                    col sep=comma
+                ]{\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Chirp.csv}};
+
+            % Legg til hjelpelinjer
+            \draw[-, black, solid] (0,1) -- (14,1);
+            \draw[-, black, dashed] (0,14) -- (9,14);
+            \draw[-, black, dashed] (0,-13) -- (9,-13);
+
+            % Legg til piler
+            \draw[<->, black, solid] (2.5,1) -- (2.5,14) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_u = \SI{13}{cl/s}$};
+            \draw[<->, black, solid] (7.5,1) -- (7.5,14) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_u = \SI{13}{cl/s}$};
+
+        \end{axis}
+
+        % Plot 2
+        \begin{axis}[
+                name=plot2,
+                at=(plot1.below south west), anchor=above north west,
+                ymin=-7.5,
+                ymax=7.5,
+                ylabel={$y_1(t)$ [cl]},
+                xlabel={$t$ [s]},
+                thick,
+            ]
+            % Plott volumdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue
+            ]
+            table [%
+                    x=t,
+                    y=v,
+                    col sep=comma
+                ]
+                {\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Chirp.csv}};
+
+            % Legg til hjelpelinjer
+            \draw[-, black, solid] (0,-0.5) -- (15,-0.5);
+            \draw[-, black, dashed] (0,6) -- (9,2);
+            \draw[-, black, dashed] (0,-6) -- (9,-2);
+
+            % Legg til piler
+            \draw[<->, black, solid] (2.4,-0.5) -- (2.4,5) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_y = \SI{4.5}{cl}$};
+            \draw[<->, black, solid] (7.4,-0.5) -- (7.4,2.8) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_y = \SI{2.3}{cl}$};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Strømningsrate ved fylling og tapping med sinussignal med økende fart, samt forandring i volum i beholderen.}
+    \label{fig:kap1_chirp}
+
+\end{figure}
+
+\end{document}

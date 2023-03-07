@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% KAPPITTEL 1: GRAF FLOW
+% KAPPITTEL 1: GRAF KONSTANT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[../main]{subfiles}
@@ -35,6 +35,7 @@
                 name path=FLOW,
                 no marks,
                 color=blue,
+                thick
             ]
             table[%
                     x=t,
@@ -50,12 +51,18 @@
             % Skraver areal mellom graf og akse
             \addplot[solid, gray, opacity=0.25] fill between [of=FLOW and AXIS, soft clip={domain=1.7:4.4}];
 
-            % Legg til teskt for areal
-            \node [] at (3,10) {$A1$};
+            % Legg til tekst for areal
+            \node [] at (3,10) {$A_1 = \SI{52}{cl}$};
+
+            % Hjelpelinjer
+            \draw[-, black, dashed] (1.75,-100) -- (1.75,100);
+            \draw[-, black, dashed] (4.4,-100) -- (4.4,100);
+            \draw[-, black, dashed] (0,0) -- (100,0);
+            \draw[-, black, dashed] (0,20) -- (100,20);
 
             % Legg til piler
-            \draw[<->, black, dashed] (1.8,0) -- (4.4,0) node [pos=0.5,below] {$\Delta t = \SI{2.6}{s}$};
-            \draw[<->, black, dashed] (4.5,0) -- (4.5,20) node [pos=0.5,right] {$\Delta u = \SI{20}{cl/s}$};
+            \draw[<->, black, solid] (1.75,-5) -- (4.4,-5) node [midway, fill=white, inner sep=1, scale=0.9] {$\Delta t = \SI{2.6}{s}$};
+            \draw[<->, black, solid] (4.75,0) -- (4.75,20) node [midway, right, fill=white, inner sep=1, scale=0.9] {$\Delta u = \SI{20}{cl/s}$};
 
         \end{axis}
 
@@ -63,9 +70,9 @@
         \begin{axis}[
                 name=plot2,
                 at=(plot1.below south west), anchor=above north west,
-                ylabel={$y(t)$ [l]},
+                ylabel={$y(t)$ [cl]},
                 xlabel={$t$ [s]},
-                ymin=-5,
+                ymin=-10,
                 ymax=80,
                 domain=0:12,
             ]
@@ -73,7 +80,8 @@
             \addplot[%
                 name path=VOLUME,
                 no marks,
-                color=blue
+                color=blue,
+                thick
             ]
             table [%
                     x=t,
@@ -82,25 +90,20 @@
                 ]
                 {\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Konstant.csv}};
 
-            % Lag usynlig horisontal akse
-            \path [name path=AXIS]
-            (\pgfkeysvalueof{/pgfplots/xmin},20) --
-            (\pgfkeysvalueof{/pgfplots/xmax},20);
-
-            % Skraver areal mellom graf og akse
-            \addplot[solid, gray, opacity=0.25] fill between [of=VOLUME and AXIS, soft clip={domain=1.8:4.4}];
-
-            % Legg til teskt for areal
-            \node [] at (3.5,40) {$A2$};
+            % Hjelpelinjer
+            \draw[-, black, dashed] (1.75,-100) -- (1.75,100);
+            \draw[-, black, dashed] (4.4,-100) -- (4.4,100);
+            \draw[-, black, dashed] (0,20) -- (100,20);
+            \draw[-, black, dashed] (0,72) -- (100,72);
 
             % Legg til piler
-            \draw[<->, black, dashed] (1.9,20) -- (4.4,20) node [pos=0.5,below] {$\Delta t = \SI{2.6}{s}$};
-            \draw[<->, black, dashed] (4.4,20) -- (4.4,72) node [pos=0.5,right] {$\Delta y = \SI{52}{cl}$};
+            \draw[<->, black, solid] (1.75,10) -- (4.4,10) node [midway, fill=white, inner sep=1, scale=0.9] {$\Delta t = \SI{2.6}{s}$};
+            \draw[<->, black, solid] (4.75,20) -- (4.75,72) node [midway, right, fill=white, inner sep=1, scale=0.9] {$\Delta y = \SI{52}{cl}$};
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Strømning $u(t)$ ved fylling og tapping av væske i glasset og forandring i volum $y(t)$ i glasset.}
-    \label{fig:kap1_flow}
+    \caption{Strømningsrate ved fylling og tapping med konstant rate, samt forandring i volum i beholderen.}
+    \label{fig:kap1_konstant}
 
 \end{figure}
 

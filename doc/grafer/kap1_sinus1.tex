@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KAPPITTEL 1: GRAF SINUS1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[../main]{subfiles}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start av dokumentet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+
+    \pgfplotsset{
+        grid=major,
+        height=0.3\textwidth,
+        xmin=1,
+        xmax=7,
+        width=\linewidth,
+    }
+    \begin{tikzpicture}
+        % Plot 1
+        \begin{axis}[%
+                name=plot1,
+                ylabel={$u_1(t)$ [cl/s]},
+                xlabel={$t$ [s]},
+                ymin=-25,
+                ymax=20,
+                thick,
+            ]
+
+            % Plott strømningsdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue,
+            ]
+            table[%
+                    x=t,
+                    y=f,
+                    col sep=comma
+                ]{\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Sinus1.csv}};
+
+            % Legg til hjelpelinjer
+            \draw[-, black, solid] (0,1) -- (7,1);
+            \draw[-, black, dashed] (0,13) -- (7,13);
+            \draw[-, black, dashed] (2,-30) -- (2,30);
+            \draw[-, black, dashed] (5,-30) -- (5,30);
+
+
+            % Legg til piler
+            \draw[<->, black, solid] (2,-15) -- (5,-15) node [midway, fill=white, inner sep=1, scale=0.9] {$T_{p_{u_1}} = \SI{3}{s}$};
+            \draw[<->, black, solid] (4.2,1) -- (4.2,13) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_{u_1} = \SI{12}{cl/s}$};
+
+        \end{axis}
+
+        % Plot 2
+        \begin{axis}[
+                name=plot2,
+                at=(plot1.below south west), anchor=above north west,
+                ymin=-10,
+                ymax=7.5,
+                ylabel={$y_1(t)$ [cl]},
+                xlabel={$t$ [s]},
+                thick,
+            ]
+            % Plott volumdata fra .csv-fil
+            \addplot[%
+                no marks,
+                color=blue
+            ]
+            table [%
+                    x=t,
+                    y=v,
+                    col sep=comma
+                ]
+                {\subfix{../../src/Prosjekt01_NumeriskIntegrasjon/data/Prosjekt01_NumeriskIntegrasjon_Sinus1.csv}};
+
+            % Legg til hjelpelinjer
+            \draw[-, black, solid] (0,-2) -- (7,-2);
+            \draw[-, black, dashed] (0,4) -- (7,4);
+            \draw[-, black, dashed] (2,-30) -- (2,30);
+            \draw[-, black, dashed] (5,-30) -- (5,30);
+
+            % Legg til piler
+            \draw[<->, black, solid] (2,-8) -- (5,-8) node [midway, fill=white, inner sep=1, scale=0.9] {$T_{p_{y_1}} = \SI{3}{s}$};
+            \draw[<->, black, solid] (5.2,-2) -- (5.2,4) node [midway, right, fill=white, inner sep=1, scale=0.9] {$a_{y_1} = \SI{6}{cl}$};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Strømningsrate ved fylling og tapping med sinussignal med lav fart, samt forandring i volum i beholderen.}
+    \label{fig:kap1_sinus1}
+
+\end{figure}
+
+\end{document}

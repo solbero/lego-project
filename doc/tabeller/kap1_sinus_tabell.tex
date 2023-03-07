@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KAPPITTEL 1: TABELL SINUS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[../main.tex]{subfiles}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start av dokumentet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}rrrrrrr@{}}
+        \toprule
+        \multicolumn{1}{c}{$f$} & \multicolumn{1}{c}{$\dot{f}$} & \multicolumn{1}{c}{$T_p$} & \multicolumn{1}{c}{$\omega$} & \multicolumn{1}{c}{$a_u$} & \multicolumn{1}{c}{$a_y$} & \\ \midrule
+        $u_1$                   & $y_1$                         & \SI{3.0}{s}               & \SI{2.1}{rad/s}              & \SI{12}{cl/s}             & \SI{5.7}{cl}                \\
+        $u_2$                   & $y_2$                         & \SI{0.7}{s}               & \SI{9.0}{rad/s}              & \SI{13}{cl/s}             & \SI{1.4}{cl}                \\ \bottomrule
+    \end{tabular}
+    \caption{Kalkulering av nøkkeltall for lav fart $u_1$ og høy fart $u_2$.}
+    \label{tab:kap1_sinus}
+\end{table}
+
+\end{document}
