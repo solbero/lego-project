@@ -28,7 +28,6 @@
                 xlabel={$t$ [s]},
                 ymin=-15,
                 ymax=25,
-                title={Strømningsrate}
             ]
 
             % Plott strømningsdata fra .csv-fil
@@ -53,7 +52,7 @@
             \addplot[solid, gray, opacity=0.25] fill between [of=FLOW and AXIS, soft clip={domain=1.7:4.4}];
 
             % Legg til tekst for areal
-            \node [] at (3,10) {$A_1$};
+            \node [] at (3,10) {$A_1 = \SI{52}{cl}$};
 
             % Hjelpelinjer
             \draw[-, black, dashed] (1.75,-100) -- (1.75,100);
@@ -76,7 +75,6 @@
                 ymin=-10,
                 ymax=80,
                 domain=0:12,
-                title={Volum}
             ]
             % Plott volumdata fra .csv-fil
             \addplot[%

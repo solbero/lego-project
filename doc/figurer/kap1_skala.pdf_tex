@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'kap1_skisse_beholder.pdf' (pdf, eps, ps)
+%% Accompanies image file 'kap1_skala.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{304.08222829bp}%
+    \setlength{\unitlength}{654bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.30955405)%
+  \begin{picture}(1,0.31458034)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{kap1_skisse_beholder.pdf}}%
-    \put(0.67533447,0.19239227){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tapping $u(k)$ [cl/s],\\$u(k) \leq 0$\end{tabular}}}}%
-    \put(-0.00050336,0.19246687){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Fylling $u(k)$ [cl/s],\\$u(k) \geq 0$\end{tabular}}}}%
-    \put(0.35440074,0.19246687){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Volum $y(k)$ [cl],\\$y(k) \geq 0$ \end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{kap1_skisse_beholder.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{kap1_skala.pdf}}%
+    \put(0.05960856,0.29037751){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tilsvarer tapping\\$u(k) < 0$\end{tabular}}}}%
+    \put(0.69489316,0.29037751){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tilsvarer fylling\\$u(k) > 0$\end{tabular}}}}%
+    \put(0.42825713,0.29037751){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Startfelt\\$u(k) = 0$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

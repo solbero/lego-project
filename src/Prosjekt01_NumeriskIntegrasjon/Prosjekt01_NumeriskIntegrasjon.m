@@ -1,5 +1,5 @@
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-% Prosjekt0X_.....
+% Prosjekt01_NumeriskIntegrasjon.m
 %
 % Hensikten med programmet er å test numerisk integrasjon med variabelt tidsskritt
 % Følgende sensorer brukes:
@@ -129,12 +129,12 @@ while ~JoyMainSwitch
     if k == 1
         % Initialverdier
         Ts(k) = 0.01;  % nominell verdi
-        Volum(k) = 2.5; % initialverdi volum [cl]
-        Flow(k) = 0; % initialverdi flow [cl/s]
+        Volum(k) = 0.0; % initialverdi volum [cl]
+        Flow(k) = 0.0; % initialverdi flow [cl/s]
     else
         Ts(k) = Tid(k) - Tid(k-1); % beregne tidsskritt
         Flow(k) = Lys(k) - ZeroFlow; % beregne flow [cl/s]
-        Volum(k) = Volum(k-1) + Ts(k) * Flow(k); % beregne volum [cl]
+        Volum(k) = EulerForward(Volum(k-1), Flow(k-1), Ts(k)); % beregne volum [cl]
     end
 
     %--------------------------------------------------------------
