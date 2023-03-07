@@ -16,103 +16,106 @@
 Gruppen ønsker å vise at måledata fra \textsc{EV3}-roboten kan numerisk integreres ved bruk av \textsc{MATLAB}.
 
 \section{Numerisk integrasjon}
-Numerisk integrasjon er en metode for å estimere et bestemt integral. Metoden bygger på at integranden $f(x)$ er, eller kan deles opp i, en serie med diskrete intervaller. Arealet under $f(x)$ for serien estimeres som en sum av arealet for hvert intervall i serien \parencite[s. 297–301]{AdaEss2017}.
+Numerisk integrasjon er en metode for å estimere et bestemt integral. Metoden bygger på at integranden $f(x)$ er, eller kan deles opp i, en serie med diskrete intervaller. Arealet under $f(x)$ estimeres som en sum av arealene for hvert intervall i serien \parencite[s. 297–301]{AdaEss2017}.
 
 Utrykket for å estimere arealet under $f(x)$ for en serie diskrete verdier $n$ kan derfor utrykkes som
 \begin{equation}\label{eq:kap1_sum_area}
     \hat{A} =\sum_{k=1}^{n-1} \, f(x_k) \cdot \Delta x_k
 \end{equation}
-hvor $\Delta x_k$ er lengden på intervallet mellom to elementer i serien og $f(x_k)$ er verdien til integranden på det respektive intervallet. Figur~\ref{fig:kap1_partitioning} viser et grafisk eksempel på hvordan ligning \eqref{eq:kap1_sum_area} estimerer integralet til $f(x)$.
+hvor $\Delta x_k$ er lengden på intervallet ved element $k$, og $f(x_k)$ er verdien til integranden på intervall $x_k$. Figur~\ref{fig:kap1_partitioning} viser et grafisk eksempel på hvordan ligning \eqref{eq:kap1_sum_area} estimerer arealet under $f(x)$.
 
 \subfile{./figurer/kap1_partitioning.tex}
 
-Det bør bemerkses at etterhvert som intervallene blir uendelig små, altså at $\lim_{n \to \infty}$, så vil ligning \eqref{eq:kap1_sum_area} konvergere mot det bestemte integralet for $f(x)$.
+Etterhvert som lengden på intervallene $\Delta x_k$ blir uendelig små, altså at $\lim_{n \to \infty}$, så vil ligning \eqref{eq:kap1_sum_area} konvergere mot det bestemte integralet for $f(x)$.
 
-For å kunne benytte ligning \eqref{eq:kap1_sum_area} i \textsc{MATLAB} må den skrives på rekursiv form \parencite[s.~53–58]{Dre2023Simulink}. Vi har i denne oppgaven valgt å benytte Euler's forovermetode
+For å kunne benytte ligning \eqref{eq:kap1_sum_area} i \textsc{MATLAB} må den skrives på rekursiv form \parencite[s.~53–58]{Dre2023Simulink}. Vi har i denne oppgaven valgt å benytte Euler's forovermetode som utrykkes som
 \begin{equation}\label{eq:kap1_area_rec}
     y_k = y_{k-1} + \Delta{x_k} \cdot f(x_{k-1}) \quad \forall k=2,..., n
 \end{equation}
-hvor $k$ er indeksen til gjeldende element, $y_{k-1}$ er arealet under integranden ved forrige måling, $\Delta{x_k}$ er lengden av intervallet ved gjeldende element og $f(x_{k-1})$ er verdien til integranden ved forrige element.
+hvor $k$ er indeksen til gjeldende element, $y_{k-1}$ er arealet under integranden ved forrige element, $\Delta{x_k}$ er lengden av intervallet ved gjeldende element og $f(x_{k-1})$ er verdien til integranden ved forrige element.
 
-En generell implementering av den rekursive ligningen \eqref{eq:kap1_area_rec} i \textsc{MATLAB} kan sees i kode~\ref{lst:kap1_euler}. Legg merke til at en initialverdi for $y(k)$ må tilordnes for å kunne estimere arealet på det første intervallet.
+Kode~\ref{lst:kap1_euler} viser en generell implementering av ligning \eqref{eq:kap1_area_rec} i \textsc{MATLAB}. Legg merke til at en initialverdi for $y(k)$ må tilordnes for å kunne estimere arealet på det første intervallet i serien.
 
 \subfile{./kode/kap1_euler_forward.tex}
 
-Grunnen til at vi har valgt å benytte Euler's forovermetode at metoden gir et estimat på integralet ved gjeldende element gitt verdien av integralet og integranden ved forrige element. Dette er ønskelig fordi vi da kun må lagre to verdier for å kunne estimere itegralet for hele serien.
+Grunnen til at vi har valgt å benytte Euler's forovermetode at metoden gir et estimat på integralet ved gjeldende element $k$ gitt verdien av integralet $y(k-1)$ og integranden $f(k-1)$ ved forrige element. Dette er ønskelig fordi vi da kun må tilordne to verdier for å kunne estimere itegralet for hele serien.
 
 \section{Implentering av numerisk integrasjon i \textsc{MATLAB}}
 
-For å verifisere at Euler's forovermetode kan brukes til å integrere måledata i \textsc{MATLAB} har vi utført to forsøk. Begge forsøkene tar utgangspunkt i å simulere fylling og tapping av væske i en beholder. En skisse av simuleringen for forsøket kan sees i figur~\ref{fig:kap1_skisse_beholder}.
+For å verifisere at Euler's forovermetode kan brukes til å integrere måledata i \textsc{MATLAB} har vi utført tre forsøk. Alle tre forsøkene tar utgangspunkt i å simulere fylling og tapping av væske i en beholder. En skisse av det konseptuelle oppsettet for forsøket kan sees i figur~\ref{fig:kap1_skisse_beholder}.
 
 \subfile{./figurer/kap1_skisse_beholder.tex}
 
-Raten $u(k)$ det fylles og tappes væske i beholderen styres av måledata fra lyssensoren til \textsc{EV3}-roboten. Volumet av væske i beholderen $y(k)$ kalkulereres ved å numerisk integrere fylle- og tapperaten i \textsc{MATLAB}. Dette gjøres ved benytte implementering vist i kode~\ref{lst:kap1_integrasjon_beholder} av den generelle koden vist i kode~\ref{lst:kap1_euler}.
+Raten $u$ det fylles og tappes væske i beholderen bestemmes av måledata fra lyssensoren til \textsc{EV3}-roboten. Volumet $y$ av væske i beholderen kalkulereres ved å numerisk integrere fylle- og tapperaten $u$ i \textsc{MATLAB}. Dette gjøres ved benytte implementeringen av Euler's fremovermetode vist i kode~\ref{lst:kap1_integrasjon_beholder}.
 
 \subfile{./kode/kap1_integrasjon_beholder.tex}
 
-For å verifisere at implementeringen vår i \textsc{MATLAB} er riktig har vi sammenlignet resultatene fra numerisk integrasjonen i de to forsøkene med analytiske verdier.
+For å verifisere at implementeringen vår i \textsc{MATLAB} av numerisk integrasjon er riktig har vi sammenlignet resultatene fra de tre forsøkene med analytisk kalkulerte verdier.
 
-\subsection{Integrasjon av en konstant}\label{sub:kap1_integrasjon_konstant}
+\subsection{Integrasjon av konstant}\label{sub:kap1_integrasjon_konstant}
 
-Dette forsøket simulerer fylling og tapping av væske i beholderen i figur~\ref{fig:kap1_skisse_beholder} med en konstant rate. Fylling og tapping av væske gjennom kranene blir simulert ved å lese av reflektert lys fra en gråskalastripe. Gråskalastripen kan sees i figur~\ref{fig:kap1_skala}.
+Dette forsøket simulerer fylling og tapping med en konstant rate av væske i beholderen. Fylling og tapping av væske gjennom kranene blir simulert ved å lese av reflektert lys fra en gråskalastripe med lysmåleren til \textsc{EV3}-roboten. Gråskalastripen som ble brukt i forsøket kan sees i figur~\ref{fig:kap1_skala}.
 
 \subfile{./figurer/kap1_skala.tex}
 
-Lysmåleren til \textsc{EV3}-roboten blir plasert på gråskalafeltet i midten av stripen i figur~\ref{fig:kap1_skala}. Når filen \href{https://github.com/solbero/lego-project/blob/main/src/Prosjekt01_NumeriskIntegrasjon/Prosjekt01_NumeriskIntegrasjon.m}{\texttt{Prosjekt01\_NumeriskIntegrasjon.m}} blir kjørt blir den første lysmålingen fra lyssensoren gitt verdien $\SI{0}{cl/s}$. Ved å flytte lysmåleren til høyre for startfeltet vil strømningsraten bli positiv, og ved å flytte lysmåleren til venstre for startfeltet vil strømningsraten bli negativ.
+Lysmåleren til \textsc{EV3}-roboten ble plassert på gråskalafeltet i midten av stripen i figur~\ref{fig:kap1_skala}. Når filen \href{https://github.com/solbero/lego-project/blob/main/src/Prosjekt01_NumeriskIntegrasjon/Prosjekt01_NumeriskIntegrasjon.m}{\texttt{Prosjekt01\_NumeriskIntegrasjon.m}} ble kjørt ble den første lysmålingen fra lyssensoren gitt verdien $\SI{0}{cl/s}$. Ved å flytte lysmåleren til høyre for startfeltet vil strømningsraten $u(k)$ bli positiv, og ved å flytte lysmåleren til venstre for startfeltet vil strømningsraten $u(k)$ bli negativ.
 
-I figur~\ref{fig:kap1_konstant} er fylle og tapperaten $u(k)$ plottet sammen med volumet $y(k)$ i beholderen.
+I figur~\ref{fig:kap1_konstant} er fylle og tapperaten $u(t)$ plottet sammen med volumet $y(t)$ i beholderen.
 
 \subfile{./grafer/kap1_konstant.tex}
 
-For å kontrollere at implementeringen i \textsc{MATLAB} av Euler's fremovermetode er korrekt, kan vi sammenligne resultatene i figur~\ref{fig:kap1_konstant} med det analytisk integralet til $u(t)$. Ved å integrere $u(t)$ fra $t = \SI{1.8}{s}$ til $t = \SI{4.4}{s}$
+For å kontrollere at implementeringen i \textsc{MATLAB} av Euler's fremovermetode er korrekt, kan vi sammenligne resultatene i figur~\ref{fig:kap1_konstant} med det analytisk integralet til $u(t)$. For at vår implementering av numerisk integrasjon skal være korrekt så skal integralet $I$ tilsvare arealet $A_1$ under $u(t)$ og forandringen i volum $\Delta y$ på intervallet $t$ = [\SI{1.8}{s}, \SI{4.4}{s}].
 \begin{align}
     I & = \int_{1.8}^{4.4} \Delta u \, dt \nonumber       \\
       & = \Delta u \cdot t \, \Big|_{1.8}^{4.4} \nonumber \\
       & = \Delta u \cdot (4.4 - 1.8) \nonumber            \\
       & = \SI{52}{cl} \label{eq:kap1_konstant_integral}
 \end{align}
-For at vår implementering av numerisk integrasjon skal være korrekt så skal integralet $I$ tilsvare arealet under $u(t)$ og forandringen i volum $y(t)$ på intervallet $t = \SI{1.8}{s}$ til $t = \SI{4.4}{s}$. Ved å sammeligne integralet i ligning \eqref{eq:kap1_konstant_integral} med figur~\ref{fig:kap1_konstant} kan vi verifisere at imlementeringen vår er korrekt for numerisk integrasjon av en konstant rate.
 
-\subsection{Integrasjon av et sinussignal}
+Ved å sammeligne integralet $I$ i ligning \eqref{eq:kap1_konstant_integral} med figur~\ref{fig:kap1_konstant} kan vi verifisere at imlementeringen vår er korrekt for numerisk integrasjon av en konstant rate.
 
-Dette forsøket simulerer også fylling og tapping av væske i beholderen skissert i figur~\ref{fig:kap1_skisse_beholder}. Til forskjell fra forsøket beskrevet i seksjon~\ref{sub:kap1_integrasjon_konstant} simuleres nå fylling og tapping som et sinus.
+\subsection{Integrasjon av sinussignal}
 
-En sinus blir generert ved å bevege lysmåleren til \textsc{EV3}-roboten i en sirkel på et A4-gråskalaark som kas sees i figur~\ref{fig:kap1_ark}.
+Dette forsøket simulerer også fylling og tapping av væske i beholderen skissert i figur~\ref{fig:kap1_skisse_beholder}. Til forskjell fra forsøket beskrevet i seksjon~\ref{sub:kap1_integrasjon_konstant} simuleres nå fylling og tapping som et sinussignal.
+
+Et sinussignal blir generert ved å bevege lysmåleren til \textsc{EV3}-roboten i en sirkel på et A4-gråskalaark som i figur~\ref{fig:kap1_ark}.
 
 \subfile{./figurer/kap1_ark.tex}
 
-To målinger ble gjennomført der lysmåleren ble beveget med konstant fart en sirkel på gråskalaarket. Under første måling ble lysmåleren beveget med en lav fart, og under andre måling ble lysmåleren beveget med en høy hastighet.
+To målinger ble gjennomført der lysmåleren ble beveget med konstant fart i en sirkel på gråskalaarket. Under første måling ble lysmåleren beveget med en lav fart, og under andre måling ble lysmåleren beveget med en høy fart.
 
-I figur~\ref{fig:kap1_sinus1} er fylle- og tapperaten $u_1(t)$ plottet sammen med volumet $y_1(t)$ i beholderen for den første hastigheten. Figur~\ref{fig:kap1_sinus2} viser fylle- og tapperaten $u_2(t)$ plottet sammen med volumet $y_2(t)$ i beholderen for den andre hastigheten.
+Figur~\ref{fig:kap1_sinus1} viser fylle- og tapperaten $u_1(t)$ ved lav fart plottet sammen med volumet $y_1(t)$ i beholderen. Figur~\ref{fig:kap1_sinus2} viser fylle- og tapperaten $u_2(t)$ ved høy fart plottet sammen med volumet $y_2(t)$ i beholderen.
 
 \subfile{./grafer/kap1_sinus1.tex}
 
 \subfile{./grafer/kap1_sinus2.tex}
 
-For å kontrollere implementeringen av Euler's fremovermetode korrekt, kan vi sammenligne måledataene med et analytisk integral av et sinussignal.
+For å kontrollere at implementeringen i \textsc{MATLAB} av Euler's fremovermetode er korrekt for integrasjon av et sinussignal, kan vi sammenligne måledataene for lav og høy fart med det analytisk integralet av sinussignalet $u(t)$.
 
-Integralet av et sinussignal kan skrives som
+Det bestemte integralet av en sinus er
 \begin{align}
     I & = \int_{0}^{t} a_u \cdot \sin{(\omega \cdot t)} \, dt \nonumber \\
-      & = -\frac{a}{\omega} \cdot \cos{(\omega \cdot t)}
+      & = -\frac{a_u}{\omega} \cdot \cos{(\omega \cdot t)}
 \end{align}
-
-hvor vinkelfrekvensen $\omega$ regnes ut fra perioden $T_p$ lest av fra figur~\ref{fig:kap1_sinus1} og \ref{fig:kap1_sinus2}
+som gir oss at amplituden $a_y$ til volumet $y(t)$ tilsvarer amplituden $a_u$ til $u(t)$ delt på vinkelfrekvensen $\omega$.
 \begin{equation}
-    \omega = \frac{2\pi}{T_p}
+    a_y = \frac{a_u}{\omega} \label{eq:kap1_amplitude}
 \end{equation}
 
-som betyr at amplituden $a_y$ til volumet $y(t)$ i beholderen kan regnes ut fra
-\begin{equation}
-    a_y = \frac{a_u}{\omega}
-\end{equation}
+Tabell~\ref{tab:kap1_sinus} viser utregning av vinkelfreksvens $\omega$ og amplitudene $a_u$ og $a_y$ til $u(t)$ og $y(t)$ for høy og lav fart.
 
-Tabell~\ref{tab:kap1_sinus} viser disse utregningene for lav og høy hastighet på sirkelbevegelsen.
+\subfile{./tabeller/kap1_sinus_tabell.tex}
 
-\subfile{./tabeller/kap1_sinus.tex}
+Ved a sammenligne verdiene i tabell~\ref{tab:kap1_sinus} med verdiene lest av fra figur~\ref{fig:kap1_sinus1} og \ref{fig:kap1_sinus2} kan vi konkludere med at implementeringen av den numeriske integrasjonen er korrekt.
 
-Ved a sammenligne verdiene for $a_y$ i tabellen med verdiene lest av fra figur~\ref{fig:kap1_sinus1} og \ref{fig:kap1_sinus2} kan vi konkludere med at implementeringen av den numeriske integrasjonen er korrekt.
+\subsection{Integrasjon av chirpsignal}
 
-\subsection{Integrasjon som funksjon}
+For å skjekke at amplituden $a_y$ til det integrerte signalet $y(t)$ er avhengig av vinkelfrekvensen $\omega$ til signalet $u(t)$ generete vi et chirpsignal med lyssensoren til \textsc{EV3}-roboten. Chirpsignalet ble generert ved å jevnt øke farten som lysmåleren ble beveget i sirkel som sett i figur~\ref{fig:kap1_ark}.
+
+Hvis amplituden til $y(t)$ er avhengig av vinkelfrekvensen $\omega$ til $u(t)$ som vist i ligning \eqref{eq:kap1_amplitude}, så skal amplituden til $y(t)$ synke med økende vinkelfrekvens hvis amplituden $a_u$ til $u(t)$ er konstant.
+
+Figur~\ref{fig:kap1_chirp} viser fylle- og tapperaten $u(t)$ plottet sammen med volumet $y(t)$ i beholderen. Figuren viser at amplituden $a_y$ til $y(t)$ synker med økende vinkelfrekvens i signalet $u(t)$, noe som betyr at implementeringen er korrekt.
+
+\subfile{./grafer/kap1_chirp.tex}
 
 \end{document}
